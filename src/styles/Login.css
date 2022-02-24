@@ -1,0 +1,14 @@
+.Login{
+	background-color: #009AEE;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: auto;
+}
+
+.login__container{
+	width: 95vw;
+	height: 95vh;
+	background-color: white;
+	border-radius: 1em;
+}

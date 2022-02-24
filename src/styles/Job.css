@@ -1,0 +1,11 @@
+.job__detailView{
+	background-color: white;
+	display: flex;
+	margin-bottom: 1em;
+	padding: .5em;
+}
+
+.job__icon{
+	margin-right: 2em;
+
+}
