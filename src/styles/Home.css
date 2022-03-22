@@ -82,6 +82,8 @@
 .home__filters>form>div>input{
 	border: none;
 	border-radius: 2em;
+	outline: none;
+	padding-left: 1em;
 }
 
 .home__filters>form>div>button{

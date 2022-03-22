@@ -1,8 +1,44 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import '../styles/NavBar.css'
 import MenuIcon from '@material-ui/icons/Menu';
+import { useStateValue } from '../DataStore'
+import { auth, signOut } from '../firebase'
+import { actionTypes } from '../reducer'
 
 const NavBar = () => {
+	const navigate = useNavigate();
+	const [{ user }, dispatch] = useStateValue();
+
+	const postJob = ()=>{
+		if(!user){
+			alert("You Need To Sign in First")
+		}else{
+			navigate('/profile')
+		}
+	}
+
+	const logOut =()=>{
+		signOut(auth).then(()=>{
+			alert("You Have Signed Out")
+			dispatch({
+				type: actionTypes.LOG_OUT
+			})
+		}).catch(error=>{
+			alert("Error Logging Out")
+		})
+
+	}
+
+	const validate =()=>{
+		if (!user) {
+			alert("You Need to be Signed in First")
+			navigate('/login')
+		} else {
+			navigate('/profile')
+		}
+	}
+
 	return (
 		<div className="NavBar">
 			<div className="navbar__hamburgerIcon">
@@ -12,11 +48,14 @@ const NavBar = () => {
 			
 			</div>
 			<div className="navbar__auth">
-				<h5>Sign In</h5>
+				{user?(<h5 onClick={logOut}>Sign Out</h5>):(<h5 onClick={()=>navigate('/login')}>Sign In</h5>)}
 			</div>
 			<div className="navbar__profile">
-				<h5>Profile</h5>
+				<h5 onClick={validate}>Profile</h5>
 			</div>
+			{user?(<div className="navbar__postJob">
+				<button onClick={postJob} className="link">Post Job</button>
+			</div>):null}
 		</div>
 	)
 }

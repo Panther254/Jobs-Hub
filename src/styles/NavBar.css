@@ -27,3 +27,24 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.navbar__auth > h5:hover{
+	cursor: pointer;
+}
+
+.navbar__profile > h5:hover{
+	cursor: pointer;
+}
+
+.navbar__postJob>button{
+	background-color: #009aee;
+	text-align: center;
+	color: white;
+	border-radius: 1em;
+	outline: none;
+	border: none;
+}
+
+.link:hover{
+	cursor: pointer;
+}

@@ -1,11 +1,24 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom"
 import '../styles/Home.css'
 import NavBar from './NavBar.js'
 import Job from './Job.js'
 import Footer from './Footer.js'
 import { Icon } from '@iconify/react';
+import { useStateValue } from '../DataStore'
 
 const Home = () => {
+	const navigate = useNavigate();
+	const [{ user },] = useStateValue();
+
+	const getStarted =()=>{
+		if (user) {
+			navigate('/profile')
+		} else {
+			navigate('login')
+		}
+	}
+
 	return (
 		<div className="Home">
 			<NavBar />
@@ -16,7 +29,7 @@ const Home = () => {
 					<h3>In Need of A Job?</h3>
 					<p>Looking for a job does not have to be</p>
 					<p>stressfull anymore</p>
-					<button>Get Started</button>
+					<button onClick={getStarted}>Get Started</button>
 				</div>
 			</div>
 			<hr/>
@@ -100,7 +113,7 @@ const Home = () => {
 						<p>Get Matched With Your Employer</p>
 					</div>
 				</div>
-				<button>GET STARTED</button>
+				<button onClick={getStarted}>GET STARTED</button>
 			</div>
 
 			<div className="home__testimonials">

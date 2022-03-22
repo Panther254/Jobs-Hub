@@ -3,6 +3,7 @@
 	display: flex;
 	margin-bottom: 1em;
 	padding: .5em;
+	width: 95%;
 }
 
 .job__icon{
